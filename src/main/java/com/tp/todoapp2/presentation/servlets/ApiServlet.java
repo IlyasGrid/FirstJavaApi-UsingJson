@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.tp.todoapp2.beans.Todo;
 import com.tp.todoapp2.busness.DefaultService;
 
-@WebServlet("/Todo/*")
+@WebServlet("/Todo")
 public class ApiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -75,11 +75,8 @@ public class ApiServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// Get the JSON payload from the request body
-		BufferedReader reader = req.getReader();
-		
-		// create a new instance of Todo with the parsed data  
-		Todo todo = new Gson().fromJson(reader, Todo.class);
+
+		Todo todo =(Todo) req.getAttribute("newTodo");
 
 		// add the todo to the todos list
 		DefaultService.getInstance().addTodo(todo);

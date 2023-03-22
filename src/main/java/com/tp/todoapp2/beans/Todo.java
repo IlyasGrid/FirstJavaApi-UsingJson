@@ -2,6 +2,11 @@ package com.tp.todoapp2.beans;
 
 public class Todo {
 
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", title=" + title + ", completed=" + completed + "]";
+	}
+
 	private String id;
 	private String title;
 	private boolean completed;
